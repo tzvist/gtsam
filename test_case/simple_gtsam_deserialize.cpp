@@ -379,14 +379,15 @@
          std::cout << std::fixed << std::setprecision(4) 
                    << "Processing values lines took " << elapsed << " seconds" << std::endl;
          
-         // Set up optimizer
-         t0 = std::chrono::high_resolution_clock::now();
-         LevenbergMarquardtParams params;
-         params.setVerbosityLM("SUMMARY");
-         params.setMaxIterations(20);
-         params.linearSolverType = LevenbergMarquardtParams::MULTIFRONTAL_SOLVER; // 
-        // params.linearSolverType = LevenbergMarquardtParams::MULTIFRONTAL_CHOLESKY;
-         LevenbergMarquardtOptimizer optimizer(graph, values, params);
+        // Set up optimizer
+        t0 = std::chrono::high_resolution_clock::now();
+        LevenbergMarquardtParams params;
+        params.setVerbosityLM("SUMMARY");
+        params.setMaxIterations(20);
+        params.linearSolverType = LevenbergMarquardtParams::MULTIFRONTAL_SOLVER;
+        // Set output stream for statistics reporting
+        params.multifrontalParams.reportStream = &std::cout;
+        LevenbergMarquardtOptimizer optimizer(graph, values, params);
          t1 = std::chrono::high_resolution_clock::now();
          elapsed = std::chrono::duration<double>(t1 - t0).count();
          std::cout << std::fixed << std::setprecision(4) 
