@@ -1,4 +1,5 @@
 /build
+/build_*
 /debug*
 .idea
 *.pyc
@@ -31,3 +32,7 @@ doc/#*.lyx#
 .venv/
 conductor/
 .ccache/
+
+# Large benchmark data files (exceed GitHub's 100MB limit - use benchmark_data.zip instead)
+test_case/data/simple_graph_enormous.txt
+test_case/data/simple_values_enormous*.txt

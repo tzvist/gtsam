@@ -82,7 +82,9 @@ NonlinearMultifrontalSolver::NonlinearMultifrontalSolver(
     : MultifrontalSolver(
           NonlinearMultifrontalSolver::Precompute(graph, values, ordering),
           ordering, params),
-      dampingParams_(dampingParams) {}
+      dampingParams_(dampingParams) {
+        std::cout << "!!!NonlinearMultifrontalSolver constructor" << std::endl;
+      }
 
 /* ************************************************************************* */
 MultifrontalSolver::PrecomputedData NonlinearMultifrontalSolver::Precompute(
